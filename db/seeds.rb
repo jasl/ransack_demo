@@ -5,7 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-require 'factory_girl'
+require 'factory_bot'
 
 role = {}
 
@@ -18,7 +18,7 @@ role[:moderator] = Role.create(
 
 role[:user] = Role.create(name: 'user', description: 'A plain old user.')
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :user do
     first_name { Faker::Name.first_name  }
     last_name  { Faker::Name.last_name }
@@ -36,7 +36,7 @@ FactoryGirl.define do
     tag_names { Faker::Lorem.words(3).join(',') }
   end
 
-  commenters = 1.upto(3).map { FactoryGirl.create(:user, roles: [role[:user]]) }
+  commenters = 1.upto(3).map { FactoryBot.create(:user, roles: [role[:user]]) }
 
   factory :comment do
     user { commenters.sample }
@@ -45,10 +45,10 @@ FactoryGirl.define do
 end
 
 10.times do
-  user = FactoryGirl.create(:user, roles: [role[:admin]])
+  user = FactoryBot.create(:user, roles: [role[:admin]])
   3.times do
-    post = FactoryGirl.create(:post, user: user)
-    3.times { FactoryGirl.create(:comment, post: post) }
+    post = FactoryBot.create(:post, user: user)
+    3.times { FactoryBot.create(:comment, post: post) }
   end
 end
 

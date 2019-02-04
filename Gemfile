@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
-ruby '2.3.1'
+ruby '2.6.1'
 
 # Bundle Rails master:
-gem 'rails', github: 'rails/rails'
+gem 'rails', "~> 5.2"  # , github: 'rails/rails'
 # gem 'rails', '5.0.1'
 
 # Use PostgreSQL as the database for Active Record
@@ -24,8 +24,8 @@ gem 'jquery-rails'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'ransack'
-gem 'factory_girl'
 gem 'faker'
+gem "factory_bot_rails"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -34,7 +34,7 @@ end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
-  gem 'web-console', github: 'rails/web-console'
+  gem 'web-console'# , github: 'rails/web-console'
   gem 'listen', '~> 3.0.5'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
