@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
   include UsersHelper
 
@@ -13,6 +15,7 @@ class UsersController < ApplicationController
   end
 
   private
+
     def ransack_params
       User.includes(:posts).ransack(params[:q])
     end
